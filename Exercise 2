@@ -1,0 +1,36 @@
+mkdir Algo1
+
+
+mkdir config
+mkdir bin
+mkdir logs
+mkdir scripts
+
+
+cd config
+touch config.config,variables
+cd ..
+
+cd scripts
+touch start.sh stop.sh admin.sh
+cd ..
+
+cd logs
+touch today.log
+
+cd
+
+ls -R
+
+rm Algo1/config/variables
+
+rmdir Algo1/bin
+
+cd
+
+mkdir Algo1/bin
+
+mkdir Algo1/logs/oldlogs
+
+mkdir Algo1/logs/oldlogs/2019
+
