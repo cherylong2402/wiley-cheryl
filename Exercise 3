@@ -66,11 +66,11 @@ cd ~/Payment1/configuration
 touch instance.properties
 
 #Give everyone permission to read the instance.properties file, but assign write and execute permissons only to yourself
-chmod u=rwx,og=r instance.properties
+chmod 744 instance.properties
 
 #Set permissions on the file start.sh so that everyone can execute and so that the group and owner can read and write
 cd ~/Payment1/scripts
-Chmod o+w start.sh
+chmod ug=rwx,o=x start.sh
 
 #Direct the output of man cat into a file in your home directory named cat.output
 cd ~
@@ -78,7 +78,7 @@ touch cat.output
 man cat>cat.output
 
 #Change the permission of that file so everyone can read it but only the group can write and execute
-chmod 474 cat.output
+chmod g=rwx,u=r,o=r cat.output
 
 #Go back to your home directory
 cd ~
