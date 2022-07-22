@@ -39,7 +39,7 @@ cp newOrders.log//c/Users/chery
 cat -n newOrders.log
 
 #Run a command to pull out all of the messages with the instruction buy in fix (you may need to look up the tag again) from the original log file and put them into a new log file in the logs directory named buyMessages.log
-./logs/ newlog.log
+grep buy fixGenerator.sh > ./logs/buyMessages.log
 
 #Count how many lines are in that file.
 wc -l newOrders.log
