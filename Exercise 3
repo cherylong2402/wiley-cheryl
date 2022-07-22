@@ -103,7 +103,7 @@ MYTEMP=/temp
 echo $MYTEMP
 
 #Now set the value of $MYTEMP to nothing
-MYTEMP= 0
+unset MYTEMP
 
 #Remove the temp directory that you created
 rm -r temp
