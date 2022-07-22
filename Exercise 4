@@ -23,13 +23,13 @@ Daily=`ln -s newlog.log logs`
 cd ~
 
 #Cat the original fix log file created into a less so that you can browse the file.
-cat fixGenerator.sh
+less fixGenerator.sh
 
 #Using the search function in less, look for any new order messages. (You may need to refer back to your fix training to look up the appropriate fix tag.)
-
+\39=0
 
 #Exit less and run a search using grep for all new order messages. Redirect the output to a file named newOrders.log in the logs directory.
-grep 35 newlog.log > newOrdersl.log
+grep 35 fixGenerator.sh > newOrdersl.log
 
 #Copy the newOrders.log file from the logs directory to your home directory.
 cp newOrders.log//c/Users/chery
@@ -48,7 +48,7 @@ wc -l newOrders.log
 grep -c buy buyMessages.log
 
 #Create a new version of the logfile named noNewOrders.log that has everything except new order messages in it and put it in the logs directory.
-
+grep -v "39=0" fixGenerator.sh > noNewOrders.log
 
 #Count how many words are in the noNewOrders.log.
 wc - noNewOrders.log
@@ -64,7 +64,7 @@ head -n 2 noNewOrders.log
 ln –s fixGenerator.sh fix
 
 #Tail the log file created looking for new orders only in your tail command. (This will not actually cause any updates to the screen because the log file is not currently being updated.)
-
+tail noNewOrders.log
 
 #Create a new directory named superLogs
 mkdir superLogs
