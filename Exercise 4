@@ -73,10 +73,10 @@ mkdir superLogs
 cp -R logs/superLogs
 
 #Run a single grep command with an option on grep to count the number of messages for FB in the original log file that was created.
-grep FB newOrders.log
+grep FB fixGenerator.sh
 
 #Count the number of words in the original logfile.
-wc -newOrders.log
+wc -fixGenerator.sh
 
 #Find the number of new order messages for Netflix in the original log file.
-rep -wc Netflix newOrders.log
+rep -wc Netflix fixGenerator.sh
