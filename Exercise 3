@@ -87,7 +87,7 @@ cd ~
 pwd 
 
 #Remove the directory Payment1 along with all subdirectories
-rm -rf Payment 1
+rm -r Payment 1
 
 #Delete the cat.output file, but with a warning first to the user
 alias rm='rm -i'
