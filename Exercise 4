@@ -64,7 +64,7 @@ head -n 2 noNewOrders.log
 ln –s fixGenerator.sh fix
 
 #Tail the log file created looking for new orders only in your tail command. (This will not actually cause any updates to the screen because the log file is not currently being updated.)
-tail noNewOrders.log
+tail fixGenerator.sh
 
 #Create a new directory named superLogs
 mkdir superLogs
