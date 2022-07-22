@@ -1,0 +1,14 @@
+STOCK=AAPL
+echo $STOCK
+STOCK=AAPL_US
+PRICE=290.84
+echo "The current price of" $STOCK is $PRICE
+WHOAMI=logname
+SERVERTYPE=$(uname)  
+echo $SERVERTYPE
+CMD = "uname -i"
+echo $CMD
+echo `$CMD`
+pwd
+mkdir scripts
+$PATH
