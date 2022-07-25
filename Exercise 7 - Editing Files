@@ -6,8 +6,6 @@ insert
 
 #Run a word count on the file.
 wc Avengers
-g 
-ctrl g
 
 #Edit the file to add a blank line and type in "word count" followed by the value you just got.
 o
@@ -18,13 +16,12 @@ word count:98
 
 #Copy the first line of the file and paste it after your word count entry at the bottom of the file.
 yy on first line 
-p on bottom line
 
 #Delete the first line of the file.
 dd
 
 #Undo that deletion.
-ctrl r
+u
 
 #Insert at the top of the file the text "Captain America – Endgame" followed by an empty line.
 gg Captain America – Endgame
@@ -35,8 +32,6 @@ o
 
 #Find out the number of lines in the file now.
 wc -l Avengers
-g
-ctrl g
 
 #Write the number of lines into the file one line above the word count with the text "line count" plus the value.
 line count:3
