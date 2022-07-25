@@ -35,10 +35,10 @@ top
 top | grep "root"
 
 #Experiment with the following commands while running top and note your observations:
-z
-c
-Shift P
-k
+z highlight running process in top
+c show the absolute path of the processes
+Shift P sort the processes by %CPU
+k kill a process by process ID
 
 #Run a command to check network connectivity between your Linux session and yahoo.com.
 ping yahoo.com
