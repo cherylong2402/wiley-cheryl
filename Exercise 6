@@ -8,57 +8,57 @@ df -h>~/filesystem.usage
 du ~
 
 #Show the disk usage for your home directory in human-readable format and add it a file named disk.usage in your home directory.
-du ~ -sh>~/disk.usage
+du ~ h>disk.usage
 
 #Run a disk check specifically showing output for all files and folders in human-readable format. Put the results into usage2 in your home directory.
-du -ah>~/usage2
+du -ah>usage2
 
 #Show the disk usage for everything in /var.
 du ~ /var
 
 #Run a disk usage command on your home directory that will follow any links if you have them set up and display the output in human-readable format.
-du –Lh
+du /*home -Lh
 
 #Create a folder named disk in your home directory.
 mkdir disk
 
 #Copy your output files from exercise 2, exercise 4, and exercise 5 into this folder.
-cp Exercise 2 Exercise 4 Exercise 5 ~/disk
+cp cheryl.220721.module3 cheryl.220722.module5 cheryl.220725.module6 ~/disk
 
 #Move into the disk folder.
-mv  Exercise 2 Exercise 4 Exercise 5./disk
+cd ~/disk
 
 #Run a command to create an archive tar file named disk.tar that includes everything in this folder.
-tar -czvf disk.tar
+tar -c disk.tar /disk
 
 #Reverse the previous command and undo the archive.
-tar -xzvf disk.tar
+tar -x disk.tar
 
 #Now run an archive of these files to ensure it creates a g-zipped tarball named disk.tar.gz in a single-line command.
-tar -czvf disk.tar.gz
+tar -cz disk.tar.gz /disk
 
 #Create an empty file named newdisk in this directory.
 cd disk
 touch newdisk
 
 #Uncompress the gz file you created so that it is back to being just a tar file.
-gunzip mydoc.txt.gz
+gunzip disk.tar.gz
 
 #Add the newdisk file to the tar file.
-
+tar -rvf disk.tar newdisk
 
 #Compress the tar file again to make a g-zipped tarball again.
-gzip –k mydoc.txt
+tar –cz disk.tar.gz /disk
 
 #Create another directory named disk_output in your home directory.
 mkdir disk_output
 
 #Uncompress your tarball to the directory you just created.
-gunzip mydoc.txt.gz>~/newdisk
+gunzip disk.tar.gz 
 
 #Go back to your home directory and run a command to g-zip your disk_output directory. Ensure it recursively compresses everything.
 cd~
-
+gzip –r disk_output
 
 #Run the following command to put your results in the directory specified by your instructor.
 history > cheryl.220725.module7
