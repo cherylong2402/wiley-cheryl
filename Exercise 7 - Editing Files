@@ -1,3 +1,4 @@
+##PART 1
 #Open a new file named avengers in your home directory in your editor and paste in the following text:
 insert
 
@@ -43,3 +44,28 @@ line count:3
 :wq
 
 #Rename the file avengers.yourname and put it in the location specified by the instructor.
+
+
+##PART 2
+#Open newOrders.log in your editor.
+cd newOrders.log
+
+#Duplicate the first line in the file.
+yy
+p
+
+#Go to the fifth line in the file and duplicate it also.
+yy
+p
+
+#Find and replace every instance of MTHREE with M3.
+:%s/\<MTHREE\>/M3/g
+
+#Find and replace every ; (semicolon) with a , (comma) and ensure there is no space after the commas.
+:%s/\<;\>/<,>/g
+
+#Save and exit the file.
+:wq
+
+#Rename your file to newOrders.<yourname>.log and save it in the directory specified by the instructor.
+newOrders.<cheryl>.log
