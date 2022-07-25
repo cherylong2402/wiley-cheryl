@@ -2,7 +2,7 @@
 df
 
 #Run the command again. This time ensure the output is in human-readable format and added to a file named filesystem.usage in your home directory.
-df -h>~/filesystem.usage
+df -h>filesystem.usage
 
 #Show the disk usage for your home directory.
 du ~
