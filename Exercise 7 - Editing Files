@@ -1,0 +1,50 @@
+#Open a new file named avengers in your home directory in your editor and paste in the following text:
+insert
+
+#Exit and save the file.
+:wq
+
+#Run a word count on the file.
+wc Avengers
+g 
+ctrl g
+
+#Edit the file to add a blank line and type in "word count" followed by the value you just got.
+o
+word count:98
+
+#Now use search and replace within the editor to replace every instance of the word the with THE. Ensure that you only catch the word the and not words that contain the letters the (like them).
+:%s/\<the\>/THE/g
+
+#Copy the first line of the file and paste it after your word count entry at the bottom of the file.
+yy on first line 
+p on bottom line
+
+#Delete the first line of the file.
+dd
+
+#Undo that deletion.
+ctrl r
+
+#Insert at the top of the file the text "Captain America – Endgame" followed by an empty line.
+gg Captain America – Endgame
+o
+
+#Save the changes and exit the editor.
+:wq
+
+#Find out the number of lines in the file now.
+wc -l Avengers
+g
+ctrl g
+
+#Write the number of lines into the file one line above the word count with the text "line count" plus the value.
+line count:3
+
+#Delete "Good luck" wherever it occurs in the file.
+:%s/\<Good Luck\>//g
+
+#Save and exit the file
+:wq
+
+#Rename the file avengers.yourname and put it in the location specified by the instructor.
