@@ -25,7 +25,7 @@ ps -eo pid>~/list
 #Run the following series of commands:
 sleep 300 &
 Find this command by checking the processes and running a grep
-ps -ef|grep "sleep"
+ps -ef | grep "sleep"
 Stop the process using the process id
 
 #Run a command to see a dynamic view of all the processes running on your host.
@@ -48,7 +48,6 @@ traceroute yahoo.com>~/yahoo.route
 
 #View the file using less and see how many hops it took to get there.
 less yahoo.route
-20 hops
 
 #Create a soft link named route to your network route.
 ln –s yahoo.route route
