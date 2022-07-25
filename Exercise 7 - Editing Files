@@ -47,22 +47,30 @@ line count:3
 
 
 ##PART 2
+cd ~
+./fixGenerator.sh &
+
+#Run a search for all new order singles in the fix log output and put the output of that search into a file named newOrders.log in your home directory.
+vi fixlog20220725120826.log
+/39=0
+cat fixlog20220725121136.log|grep "39=0" > ~/newOrders.log
+
 #Open newOrders.log in your editor.
-cd newOrders.log
+vi newOrders.log
 
 #Duplicate the first line in the file.
-yy
+yy first line
 p
 
 #Go to the fifth line in the file and duplicate it also.
-yy
+yy fifth line
 p
 
 #Find and replace every instance of MTHREE with M3.
 :%s/\<MTHREE\>/M3/g
 
 #Find and replace every ; (semicolon) with a , (comma) and ensure there is no space after the commas.
-:%s/\<;\>/<,>/g
+:%s/\;/,/g
 
 #Save and exit the file.
 :wq
