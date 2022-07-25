@@ -1,6 +1,6 @@
 ##PART 1
 #Open a new file named avengers in your home directory in your editor and paste in the following text:
-insert
+vi Avengers
 
 #Exit and save the file.
 :wq
