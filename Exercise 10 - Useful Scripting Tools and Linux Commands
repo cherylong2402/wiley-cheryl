@@ -53,6 +53,11 @@ dh -h
 CHAT EXAMPLE 2
 #Write a shell script which uses function to print hello world
 vi ex2
-#!/bin/sh
 echo "hello world"
 bash ex2
+or
+#!/bin/sh
+function print_msg(){
+echo "hello world"
+}
+print_msg
