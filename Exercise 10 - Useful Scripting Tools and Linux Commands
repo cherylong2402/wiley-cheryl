@@ -44,8 +44,15 @@ cheryl.220726.module12
 
 
 
-CHAT EXAMPLE
+CHAT EXAMPLE 1
 #Create a script to summarize available disk space and present in a logical and readable fashion
 vi DiskSpace
 #!/bin/sh
 dh -h
+
+CHAT EXAMPLE 2
+#Write a shell script which uses function to print hello world
+vi ex2
+#!/bin/sh
+echo "hello world"
+bash ex2
