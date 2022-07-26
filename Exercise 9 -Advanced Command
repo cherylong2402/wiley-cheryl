@@ -22,7 +22,7 @@ grep 39=1 fills.log>partialFills.log
 awk '{print 55 11 54 31 32 17}' partialFillslog > parsedPartialFills.log	
 
 #Using an editor, remove the first part of every fix tag (so you are left with the value only) and turn the file into a comma separated list with no spaces. This is how you might have to get a file ready to send to a trader.
-sed 's
+sed 's/;\/,/g/' parsedPartialFills.log
 
 #In the file, add a row of column headers separated by commas. The headers should be Symbol, OrderID, Side, Price, Qty, and ExecID.
 Symbol,OrderID,Side,Price,Qty,ExecID
