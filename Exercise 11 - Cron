@@ -1,7 +1,6 @@
 ##PART 1
 
 #Ensure the fixGenerator.sh script is installed in your home directory.
-cat fixGenerator.sh
 
 #Set up the script to run Monday-Friday at 6am.
 00 06 ** Mon,Tues,Wed,Thurs,Fri /fixGenerator.sh
@@ -39,15 +38,15 @@ touch module13.cheryl.answers
 
 #Create a file named seq1.txt and write a sentence of your choice in it.
 vi seq1.txt
-sequence 1
+i like milo
 
 #Create a file named seq2.txt and write a sentence of your choice in it.
 vi seq2.txt
-sequence 2
+i like cookies
 
 #Create a file named seq3.txt and write a sentence of your choice in it.
 vi seq3.txt
-sequence 3
+i like fries
 
 #Generate a list of these files and add the list to another file named list.txt.
 ls -l > list.txt
