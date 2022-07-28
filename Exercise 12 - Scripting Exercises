@@ -1,0 +1,38 @@
+For each activity, save your working script to a text file named as:
+cheryl-scripting-activity#.txt
+
+##ACTIVITY 1
+Create a simple shell script to tell the user about their session – they need to know:
+#What their username is
+vi cheryl-scripting-activity1.txt
+$USER
+
+#What the current date is
+date
+
+#What the time is
+date "+%T"
+
+#What their current working directory is
+pwd
+
+#How many files they have in that directory
+ls
+
+#What is the biggest file in their current directory
+du -sh
+
+##ACTIVITY 2
+Create a directory with a few test files in it (the files can be empty). 
+mkdir scriptactivity2
+cd scriptactivity2
+touch testfile1 testfile2 testfile3
+
+Now write a script that for every file in that directory you rename it to have an extension of today's date in YYYYMMDD format.
+
+##ACTIVITY 3
+You are in charge of creating a program for the lottery in your area! The options are for numbers between 1and 50. 
+#Create a script that picks 5 for each draw plus a bonus ball number between 1 and 10. Output the numbers to a file that has the date in its name.
+
+
+#Create another script that will allow users to check their lottery numbers and advise them if they match or not and how many matches they got.
