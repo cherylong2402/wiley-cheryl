@@ -75,10 +75,10 @@ sed -i '' 's/Gollum/THanos/g' LOTRtxt.txt > LOTRMarvel.txt
 diff LOTR.txt diff LOTRMarvel.txt
 
 #Change the permission on LOTR.txt so that it is read and executable for others and group, and fully accessible for the current user.
-chmod 744 LOTR.txt
+chmod 755 LOTR.txt
 
 #Count the number of words in LOTR.txt.
-wc LOTR.txt
+wc -w LOTR.txt
 
 #Rename the LOTR.txt file to LordOfTheRings.txt.
 touch LOTR.txt LordOfTheRings.txt
