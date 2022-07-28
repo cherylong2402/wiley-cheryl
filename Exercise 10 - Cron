@@ -1,0 +1,81 @@
+##PART 1
+
+#Ensure the fixGenerator.sh script is installed in your home directory.
+
+
+#Set up the script to run Monday-Friday at 6am.
+
+
+#Set up the script to run at 6pm every Friday.
+
+
+#Set up the script to run every half hour from 9-4 on Monday, Wednesday and Friday.
+
+
+#Set up the script to run every other hour every day.
+
+
+#Set up the script to run on May 4th at midday.
+
+
+#Set up the script to run on the 1st of every month at 6:25am.
+
+
+#Set up the script to run every 20 minutes every Tuesday between 10am and 2pm.
+
+
+#Set up the script to run the 1st of every other month on the hour.
+
+
+#Set up the script to run at 6am and 8am on Saturday and Sunday.
+
+
+#Copy the contents of your crontab into a file named crontab.yourname.module13 and place the file in the directory specified by your instructor.
+
+
+##PART 2.1
+For the following exercises, create a file named module13.name.answers in the directory specified by your instructor. Put the commands you use in this file. 
+
+#Create a file named seq1.txt and write a sentence of your choice in it.
+
+
+#Create a file named seq2.txt and write a sentence of your choice in it.
+
+
+#Create a file named seq3.txt and write a sentence of your choice in it.
+
+
+#Generate a list of these files and add the list to another file named list.txt.
+
+
+#Use a single command to copy the contents of all files with seq in the name into a file named total.txt.
+
+
+#Write a single command that shows how many files you have in your current directory.
+
+
+##PART 2.2
+For the following activities, start by putting the following text into a file named LOTR.txt. Use the new file to complete the exercises.
+
+#Do a case-insensitive search of the file for hobbit and output the results to the screen.
+
+
+#Put the first eight lines and the last three lines into a new file named LOTRtxt.
+
+
+#Run a command on the command line to replace all occurrences of Gollum with Thanos and output the results into a new file named LOTRMarvel.txt.
+
+
+#On the command line, run a command to compare the LOTR.txt with LOTRMarvel.txt.
+
+
+#Change the permission on LOTR.txt so that it is read and executable for others and group, and fully accessible for the current user.
+
+
+#Count the number of words in LOTR.txt.
+
+
+#Rename the LOTR.txt file to LordOfTheRings.txt.
+
+
+#Create a compressed tarball named LOTR.tar.gz that includes all the files you have created in this set of exercises.
