@@ -48,32 +48,49 @@ Length should be 8 or more characters
 The password should contain numbers and letters
 There should be both uppercase and lowercase letters
 
-echo "Type your password"
+#!/bin/bash
+password=echo "Type your password"
 Read password
-if[length($password)>7]:
+if[length($password)>7 && ]:
 if[
 
 
 ##ACTIVITY 5
 #Write a script that takes a number as an input and reverses it out to the user. For example, if the original number is 74985, the output should be 58947.
-#!/bin/bash
-echo "Enter a number"
-Read number
+#! /bin/sh
+echo "Enter a number:"
+read number
 echo $number | hook
 
 ##ACTIVITY 6
 #Create a script that takes two number parameters a and b and then shows True if a is larger than b or False otherwise.
+#!/bin/bash
+echo "Enter a value for a:"
+read a
+echo "Enter a value for b:"
+read b
+if [$a>$b] then echo "True"
+else
+echo "False"
+fi
 
 #Create a second version of the script that then tells the user the difference between the two numbers.
-
+#!/bin/bash
+Diff=|$a-$b|
+echo "The difference between the two numbers is $Diff"
 #Remember to code defensively – ensure that your script handles things appropriately if someone enters things incorrectly!
 
 ##ACTIVITY 7
 #Create a 10-question true or false quiz game in your script. Choose a topic of your liking for the questions!
+#!/bin/bash
+echo "The colour of banana is yellow(TRUE/FALSE)"
+read answer
+if [$answer=="TRUE"]
+then echo "Correct"
+fi
 
 ##ACTIVITY 8
 #Create a script that completes the following tasks:
-
 It prompts the user for a series of 5-10 integers.
 The user must be prompted for a minimum of 5 numbers.
 After the user has entered 5 numbers, the program should allow the user to stop entry or enter another number.
@@ -87,37 +104,56 @@ After performing the calculations, the program should display the following to t
 the values the user entered
 each of the calculations, using a phrase that identifies the value
 
+#!/bin/bash
+echo "Enter an integer:"
+read integer1
+((product=integer1*integer2*integer3*integer4*integer5))
+((average=integer1+integer2+integer3+integer4+integer5/n))
+((sum=integer1+integer2+integer3+integer4+integer5))
+((min=
+echo "Values entererd are $integer1 $integer2 $integer3 $integer4 $integer5"
+echo "Product of the integers is $product"
+echo "Average of the integers is $average"
+echo "sum of the integers is $sum"
+echo "min of the integers is $min"
+echo "max of the integers is $max"
 
 ##ACTIVITY 9
 #Write a script that takes a file name as a parameter.
-
-If the file exists, print an error and return a code.
-If the file does not exist, create the file.
-
+#If the file exists, print an error and return a code.
+#If the file does not exist, create the file.
+#!/bin/bash
+echo "Enter file name:"
+read file
+if [-d $file]
+then echo "error, file already exists"
+else
+`touch $file`
+echo "File created"
 
 ##ACTIVITY 10
 #Write a script that writes random numbers to a file (one number per line).
-
 The first parameter should be the file name.
 The second parameter is the number of lines to write.
 If the specified file already exists, display a relevant message and return a code.
+#!/bin/bash
+
 
 ##ACTIVITY 11
 Create a file that includes the following numbers.
-
 5 6 3 7 4 4 9 6 7 9 8 2 3 6 4 5 1 1 3 10 12
 #Write a script that uses this file to perform the following tasks:
-
 Read in the file
 Sort the numbers into reverse order and output them to the screen
 Each number should output exactly once. Duplicate numbers should not appear in the output.
+
 
 ##ACTIVITY 12
 #Write a script that checks if two files have at least one common element or not. Display an appropriate message for both scenarios. The file names should be specified as parameters. You will need to create the files to test this.
 
 ##ACTIVITY 13
 #Write a script that takes two files of unique numbers and displays the difference between the two lists (without using grep).
-
+Stretch: Create a new script that does the same thing using grep. Which script runs faster?
 For example:
 
 File 1 contains:
@@ -141,11 +177,15 @@ Only in file 1:
 Only in file 2:
 89
 7
-Stretch: Create a new script that does the same thing using grep. Which script runs faster?
+
+echo "File 1 contains: cat File1"
+echo "File 2 contains: cat File2"
+echo "Only in file 1:"
+echo "Only in file 2:"
 
 ##Activity 14
 In the materials folder on the server you will find a file called books. Copy this file to your home directory.
-
+cp books>
 #Write a script that will parse the file, producing an output csv file that will list the word and each time it appears in the file.
 
 Make sure the list is sorted in the file such that the most common word is listed at the top and then descending. For example, a couple of lines in the output file should look like this:
