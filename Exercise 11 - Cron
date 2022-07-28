@@ -31,8 +31,7 @@ cat fixGenerator.sh
 0 6,8** Sat Sun /fixGenerator.sh
 
 #Copy the contents of your crontab into a file named crontab.yourname.module13 and place the file in the directory specified by your instructor.
-touch crontab.cheryl.module13
-cp crontab.cheryl.module13
+crontab -l > crontab.cheryl.module13
 
 ##PART 2.1
 For the following exercises, create a file named module13.name.answers in the directory specified by your instructor. Put the commands you use in this file. 
