@@ -44,10 +44,8 @@ echo $(($RANDOM%51))
 echo $((RANDOM%11))
 done
 set -o errexit
-lottery_date="/c/Users/chery"
-touch $lottery_date
-exec 1>$lottery_date
-exec 2>&1
+TODAY=`date +%Y.%m.%d`
+lottery_date=~/$USER.man.$lottery_date.log
 exit 0
 
 
@@ -260,7 +258,12 @@ Compress all log files that are not the latest 3 logs files generated.
 Run the FixGenerator script with the log file being generated into the FixGen/logs directory.
 Once complete, add a cron job that will run Monday through Friday 6 a.m. to establish your environment.
 
-Remember to code defensively and ensure that you use exit codes so we know the job has successfully run. Your script should also output its own log file where we can see the status each step of the way of each part of the script.
+test -d FixGen/logs
+touch FixGen/logs
+tar -czvf
+./fixGenerator.sh>FixGen/logs
+00 06 ** Mon,Tues,Wed,Thurs,Fri /fixGenerator.sh
+
 
 ##Activity 16
 #Write a script that will output a csv that could be loaded into ITRS Geneos for monitoring on your fixGen script.
@@ -269,6 +272,9 @@ It needs to parse the log file and produce a count of each message type that has
 Ensure you distinguish in the csv file if the message was sent or received.
 Also ensure you display the message type in English so it is easy to understand in monitoring. An example might look like:
 Number of Partial fills,12
+
+
+
 
 ##Activity 17
 Create a script to convert your fix log file into a useful csv.
