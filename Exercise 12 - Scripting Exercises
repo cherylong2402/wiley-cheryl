@@ -30,7 +30,10 @@ touch testfile1 testfile2 testfile3
 
 #Now write a script that for every file in that directory you rename it to have an extension of today's date in YYYYMMDD format.
 #!/bin/bash
-date%y/%m/%d
+for file in scriptactivity2
+do
+mv $file " "$($(date +'%y/%m/%d') "$file""
+
 
 ##ACTIVITY 3
 You are in charge of creating a program for the lottery in your area! The options are for numbers between 1and 50. 
@@ -40,12 +43,13 @@ RANDOM=$$
 for i in `seq 5`
 do
 echo $(($RANDOM%51))
+done
 
 echo $((RANDOM%11))
-done
+
 set -o errexit
 TODAY=`date +%Y.%m.%d`
-lottery_date=~/$USER.man.$lottery_date.log
+lottery.date=~/$USER.man.$TODAY.log
 exit 0
 
 
@@ -56,7 +60,12 @@ list=(${line})
 for i in (${line})
 do
 echo "you have input $i"
-..
+
+awk/$i/{print}'lottery.date>numbers.match
+echo "The numbers above are those that match"
+echo"The number of matches you got is"
+wc -w/numbers.match
+exit 0
 
 ##ACTIVITY 4
 #Write a script to validate how secure someone's password is. Things you would care about:
@@ -67,8 +76,16 @@ There should be both uppercase and lowercase letters
 #!/bin/bash
 password=echo "Type your password"
 read password
-if[length($password)>7 && ]:
-if[
+Len=$(echo ${#password})
+if [$LEN -lt 8]; then
+echo "$password is smaller than 8 characters"
+fi
+if [-z "$(printf "password | tr-d "[:alum:]")"]; then
+printf "password does not contain letters and numbers"
+else 
+printf "password is secure"
+fi
+exit 0
 
 
 ##ACTIVITY 5
@@ -109,11 +126,23 @@ echo "The difference between the two numbers is $Diff"
 ##ACTIVITY 7
 #Create a 10-question true or false quiz game in your script. Choose a topic of your liking for the questions!
 #!/bin/bash
-echo "The colour of banana is yellow(TRUE/FALSE)"
+echo "Q1:The colour of banana is yellow(TRUE/FALSE)"
 read answer
 if [$answer=="TRUE"]
-then echo "Correct"
+then echo "CORRECT"
+else
+echo "WRONG"
 fi
+
+echo "Q2:Watermelon is purple(TRUE/FALSE)"
+read answer2
+if [$answer2=="FALSE"]
+then echo "CORRECT"
+else
+echo "WRONG"
+fi
+...
+
 
 ##ACTIVITY 8
 #Create a script that completes the following tasks:
@@ -144,7 +173,7 @@ echo "you have input $i"
 ((average=integer1+integer2+integer3+integer4+integer5/n))
 ((sum=integer1+integer2+integer3+integer4+integer5))
 ((min=
-echo "Values entererd are $integer"
+echo "Values entered are $line"
 echo "Product of the integers is $product"
 echo "Average of the integers is $average"
 echo "sum of the integers is $sum"
@@ -171,8 +200,22 @@ exit 0
 The first parameter should be the file name.
 The second parameter is the number of lines to write.
 If the specified file already exists, display a relevant message and return a code.
+
 #!/bin/bash
-echo $RANDOM
+echo "Enter file name:"
+read file
+if [-d $file]
+then echo "error, file already exists"
+else
+`touch $file`
+numoflines=echo"enter number of lines to be generated:"
+read n
+RANDOM=$$
+for i in `seq $n`
+do 
+echo $$RANDOM>$file
+done
+exit 0
 
 ##ACTIVITY 11
 Create a file that includes the following numbers.
@@ -181,6 +224,7 @@ Create a file that includes the following numbers.
 Read in the file
 Sort the numbers into reverse order and output them to the screen
 Each number should output exactly once. Duplicate numbers should not appear in the output.
+#!/bin/bash
 file='numbers.txt'
 while read line
 do
@@ -198,13 +242,13 @@ exit 0
 
 ##ACTIVITY 12
 #Write a script that checks if two files have at least one common element or not. Display an appropriate message for both scenarios. The file names should be specified as parameters. You will need to create the files to test this.
-inside=False
-l='"1""2""3""4""5""6"'
-list='"8""7""2""9""10"'
-for i in l
-if i in list
-do
-echo
+#!/bin/bash
+list1='"Pig""Horse""Elephant""Rabbit""Snake""Lion"'
+list2='"Rabbit""Giraffe""Lion""Rat""Fish"'
+echo "Common elements are as listed below:"
+grep -Fxf list 1 list 2
+done
+exit 0
 
 ##ACTIVITY 13
 #Write a script that takes two files of unique numbers and displays the difference between the two lists (without using grep).
@@ -212,20 +256,17 @@ Stretch: Create a new script that does the same thing using grep. Which script r
 For example:
 
 File 1 contains:
-
 1
 2
 4
 6
 File 2 contains:
-
 1
 2
 89
 6
 7
 The output should look like:
-
 Only in file 1:
 4
 
@@ -233,18 +274,28 @@ Only in file 2:
 89
 7
 
-echo "File 1 contains: cat File1"
-echo "File 2 contains: cat File2"
+#!/bin/bash
+diff -u file1 file2
 echo "Only in file 1:"
-echo "Only in file 2:"
+comm -23 <(sort file1) <(sort file2)
 
+echo "Only in file 2:"
+comm -13 <(sort file2) <(sort file2)
+
+
+Stretch: diff "${file1}" "${file2} | grep "<"
 ##Activity 14
 In the materials folder on the server you will find a file called books. Copy this file to your home directory.
-cp books>
+cp books>/c/Users/chery
+
 #Write a script that will parse the file, producing an output csv file that will list the word and each time it appears in the file.
-
+#!/bin/bash
+echo "enter word:"
+read word
+grep -i "$word" books | sort -n -r | head -n2 >books.csv
+done
+exit 0
 Make sure the list is sorted in the file such that the most common word is listed at the top and then descending. For example, a couple of lines in the output file should look like this:
-
 And,200
 Is,195
 
@@ -258,8 +309,13 @@ Compress all log files that are not the latest 3 logs files generated.
 Run the FixGenerator script with the log file being generated into the FixGen/logs directory.
 Once complete, add a cron job that will run Monday through Friday 6 a.m. to establish your environment.
 
-test -d FixGen/logs
-touch FixGen/logs
+#!/bin/bash
+echo "Enter folder name:"
+read file
+if [-d $file]
+then echo "error, folder already exists"
+else
+`touch $file`
 tar -czvf
 ./fixGenerator.sh>FixGen/logs
 00 06 ** Mon,Tues,Wed,Thurs,Fri /fixGenerator.sh
@@ -273,29 +329,35 @@ Ensure you distinguish in the csv file if the message was sent or received.
 Also ensure you display the message type in English so it is easy to understand in monitoring. An example might look like:
 Number of Partial fills,12
 
-
+#!/bin/bash
+..
+echo "Number of Partial fills, $n"
+exit 0
 
 
 ##Activity 17
 Create a script to convert your fix log file into a useful csv.
-
 Pull out the following information for each message:
-
 If the fix tag is in the message, leave a blank in the csv so that it will load appropriately in Excel.
 Translate the message type value into meaningful words.
 Ensure you have a header row in your csv file:
 Client, Message type, stock, quantity, price, side, order id, last quantity, exec id, last price 
-Client, Message type, stock, quantity, price, side, order id, last quantity, exec id, last price
+
+#!/bin/bash
+fix.log>details.csv
+echo "Client", "Message type", "stock", "quantity", "price", "side", "order id", "last quantity", "exec id", "last price" > header.csv && cat details.csv >> header.csv && mv header.csv details.csv
+exit 0
 
 ##Activity 18
 Run the fixGenerator script to generate a fix log file.
-
 Create a script to parse that log file and for each order create a text description of what happened with that order.
 This should go into a log file with a paragraph for each order.
 For example:
-
 New buy order for apple with order id 12335, 100 shares at price 54.2 
 Partial fill for apple with order id 12335, 20 shares at price 54.2
 Cancel message for apple with order id 12335
 Final state of order for apple with order id 12335: traded 40 shares at price 54.2. 
 Remember that each time you run the fix generator script, it creates a new log file so this is a good way to test.
+
+#!/bin/bash
+./fixGenerator.sh>FixGen/logs
