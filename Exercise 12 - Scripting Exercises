@@ -169,10 +169,11 @@ for i in (${line})
 do
 echo "you have input $i"
 
-((product=integer1*integer2*integer3*integer4*integer5))
+((product=paste -sd* $line | bc))
 ((average=integer1+integer2+integer3+integer4+integer5/n))
-((sum=integer1+integer2+integer3+integer4+integer5))
-((min=
+((sum=paste -sd+ $line | bc))
+((min=%d\n "${line[@]}" | sort -rn | tail -1))
+((max=%d\n "${line[@]}" | sort -rn | head -1))
 echo "Values entered are $line"
 echo "Product of the integers is $product"
 echo "Average of the integers is $average"
@@ -254,7 +255,6 @@ exit 0
 #Write a script that takes two files of unique numbers and displays the difference between the two lists (without using grep).
 Stretch: Create a new script that does the same thing using grep. Which script runs faster?
 For example:
-
 File 1 contains:
 1
 2
@@ -329,8 +329,8 @@ Also ensure you display the message type in English so it is easy to understand 
 Number of Partial fills,12
 
 #!/bin/bash
-..
-echo "Number of Partial fills, $n"
+grep -c sudo /var/log/file.log
+echo "Number of Partial fills, $n">file.csv
 exit 0
 
 
