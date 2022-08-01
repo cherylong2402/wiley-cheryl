@@ -280,10 +280,11 @@ echo "Only in file 1:"
 comm -23 <(sort file1) <(sort file2)
 
 echo "Only in file 2:"
-comm -13 <(sort file2) <(sort file2)
-
+comm -13 <(sort file1) <(sort file2)
+exit 0
 
 Stretch: diff "${file1}" "${file2} | grep "<"
+
 ##Activity 14
 In the materials folder on the server you will find a file called books. Copy this file to your home directory.
 cp books>/c/Users/chery
@@ -295,15 +296,14 @@ read word
 grep -i "$word" books | sort -n -r | head -n2 >books.csv
 done
 exit 0
+
 Make sure the list is sorted in the file such that the most common word is listed at the top and then descending. For example, a couple of lines in the output file should look like this:
 And,200
 Is,195
 
 ##Activity 15
 Imagine that you support the fix Generator script. Write a wrapper script to set up your environment properly. You can also edit the fixGenerator script if you need to.
-
 Your fixGenerator script should be in a folder called FixGen in your home directory. The script needs to do the following:
-
 Check for a folder called FixGen/logs and if not present create it
 Compress all log files that are not the latest 3 logs files generated.
 Run the FixGenerator script with the log file being generated into the FixGen/logs directory.
@@ -323,7 +323,6 @@ tar -czvf
 
 ##Activity 16
 #Write a script that will output a csv that could be loaded into ITRS Geneos for monitoring on your fixGen script.
-
 It needs to parse the log file and produce a count of each message type that has been received or sent.
 Ensure you distinguish in the csv file if the message was sent or received.
 Also ensure you display the message type in English so it is easy to understand in monitoring. An example might look like:
