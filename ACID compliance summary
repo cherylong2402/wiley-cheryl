@@ -6,7 +6,7 @@ Although it is not required, it risks big and important databases getting corrup
 ATOMIC
 Atomicity ensures that if a database crashes, progress will not be lost and we can go back to where we were before
 We either commit and complete the transaction completely or have no transaction at all until the error in one part is fixed
-An example if when we are editing the database halfway and it crashes. This property allows the data to be restored.
+An example if when we are editing the database halfway and it crashes. This property allows the data to be restored when we come back to it.
 
 CONSISTENCY
 Besides enforcing consistency on the type and size of data allowed,
@@ -25,7 +25,7 @@ ISOLATION
 This property ensures that two transactions do not interfere with each other
 A transaction will not be displayed until a user is done with it as when all active transactions are being accessed and data is being changed 
 at the same time it gets messy. Isolation ensures only when the transaction is complete then the other users can see it
-For example if 2 users want to acess the same part of the database at the same time, only one is allowed to
+For example if 2 users want to acess the same part of the database at the same time to edit records, only one is allowed to
 Until the first user is done editing, the second user cannot see the changes he has made.
 
 
