@@ -30,7 +30,8 @@ Until the first user is done editing, the second user cannot see the changes he 
 
 
 DURABILITY
-
+This property ensures that once a transaction is finished and committed, it is durable such that any failures and crashes will not affect the saved transaction
+The data is all safeguarded and saved permanently in the system
 
 
 
