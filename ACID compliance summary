@@ -5,8 +5,8 @@ Although it is not required, it risks big and important databases getting corrup
 
 ATOMIC
 Atomicity ensures that if a database crashes, progress will not be lost and we can go back to where we were before
-We either commit and complete the transaction completely or have no transaction at all
-An example if when we are editing the database halfway and it crahses. This property allows the data to be restored.
+We either commit and complete the transaction completely or have no transaction at all until the error in one part is fixed
+An example if when we are editing the database halfway and it crashes. This property allows the data to be restored.
 
 CONSISTENCY
 Besides enforcing consistency on the type and size of data allowed,
