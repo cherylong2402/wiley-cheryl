@@ -1,1 +1,41 @@
+Normalization is the process of breaking down these relationships into simpler structures. 
+A normalized design reduces the complexity of relationships by minimizing data duplication
 
+Data duplication is when the same piece of data is stored more than once in the database, causing there to be multiple rows of the same information
+This makes the table longer than it needs to be and harder to edit a piece of information
+Example if we want to edit the store address for a store we need to go to each row for that store and manually change it
+We may miss out certain rows causing there to be inconsistency in the address for that store
+
+A heap is a table thats unstructured and has no constraints that are required by any normal form. 
+This is before normalisation begins
+We start with first form followed by second normal form followed by third normal form where information is being broken down at each step
+
+For 1NF
+There is no top-to-bottom ordering to the rows.
+There is no left-to-right ordering to the columns.
+Every row can be uniquely identified.
+Every row/column intersection (field) contains only one value.
+
+Primary key needs to be identified at 1NF to identify the row
+
+For 2NF
+All of the columns except the primary key need to be strictly related to each other. Additionally, we should not repeat data across rows.
+Data is usally split into multiple datas with their own primary keys where the data under each primary key is related to the primary key itself
+
+First table with all the information is split into tables for example
+Customer and Customer orders
+Customer only contains name while customer orders contains the order id and information on orders purchased
+
+For 3NF
+No non-primary-key column is functionally dependent on any non-key set of fields
+We cannot have non primary keys dependent on any other non primary key as if we update details for that one non primary key, 
+the details for the other non primary key will need to be changed as well
+Therefore we need to create a new seaprate tables for these 2 non pirimary keys that depend on each other.
+
+3NF does protect us from update anomalies, but it also adds an additional table and more constraints. 
+Constraints take time to process and add complexity to your data model. 
+
+For Denormalisation
+When optimizing for extreme performance, 
+there are times that you are less concerned with data protection and choose to move back towards 1NF. 
+Example when there are too large datasets with too many tables, it will take too much time to completely normalise them till 3NF
