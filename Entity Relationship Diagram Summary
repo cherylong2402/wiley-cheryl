@@ -1,1 +1,32 @@
+entity relationship diagram (ERD) - a visual representation of the database structure.
 
+It is easy to quickly identify what fields are in which tables and how the tables are related, including what are the relationships between each table,
+whether is is one to one or one to many using the different arrows that connect each table
+
+
+And ERD should have these
+-Name of each table
+-Name of fields  in each table
+-Field data type, and whether or not it is nullable
+-Identification of all primary and foreign key fields
+-How each table is related to each other
+
+They do not include data and only contains words that describe the table\
+
+TABLES
+At the top of each table is the primary key followed by the other fields
+
+FIELDS
+Each field has a name that is followed by whether its null or not and what data type it is
+A field is basically a column where values will be stored in the database
+
+KEYS
+Identify the primary key at the top of the table using "PK"
+In order to link the tables we need to connect the primary key to a foreign key
+some tables will have foreign keys that link to a primary key table
+
+RELATIONSHIPS
+The link between tables is a relationship
+Example class to student table
+One class can have many students and one student can have many classes
+This relationships between the tables can be represented by different arrows
