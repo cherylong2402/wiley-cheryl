@@ -1,0 +1,84 @@
+#Activity 1
+USE Personal Trainer;
+
+SELECT * FROM Exercise
+
+#Activity 2
+SELECT * FROM Client
+
+#Activity 3
+SELECT * FROM Client 
+WHERE City IS 'Metairie'
+
+#Activity 4
+SELECT * FROM Client
+WHERE ClientID IS '818u7faf-7b4b-48a2-bf12-7a26c92de20c'
+
+#Activity 5
+SELECT * FROM Goal
+
+#Acitivity 6
+SELECT Name, LevelId 
+FROM Workout
+
+#Acitivity 7
+SELECT Name, LevelId, Notes
+FROM Workout
+WHERE LevelId IS 2
+
+#Acitivity 8
+SELECT FirstName, LastName, City
+FROM Client
+WHERE City IS 'Metairie','Kenner','Gretna'
+
+#Acitivity 9
+SELECT FirstName, LastName,  BirthDate 
+FROM Client
+WHERE BirthDate > '1980-01-01'
+
+#Acitivity 10
+SELECT FirstName, LastName,  BirthDate 
+FROM Client
+WHERE BirthDate BETWEEN '1980-01-01' AND ' 2022-01-01'
+
+#Activity 11
+SELECT EmailAddress
+FROM Login
+WHERE EmailAddress LIKE '%.gov'
+
+#Acitivity 12
+SELECT EmailAddress
+FROM Login
+WHERE EmailAddress NOT LIKE '%.com'
+
+#Activity 13
+SELECT FirstName, LastName
+FROM Client
+WHERE BirthDate IS NULL
+
+#Activity 14
+SELECT Name
+FROM ExerciseCategory 
+WHERE ParentCategoryID IS NOT NULL
+
+#Activity 15
+SELECT Name, Notes
+FROM Workout
+WHERE LevelId IS 3 
+AND Notes CONTAINS 'you'
+
+#Acitivity 16
+SELECT FirstName, LastName, City 
+FROM Client 
+WHERE LastName LIKE 'L%' AND LastName LIKE 'M%' AND LastName LIKE 'N%'
+AND WHERE City IS 'LaPlace'
+
+#Activity 17
+SELECT InvoiceId, Description, Price, Quantity, ServiceDate, Price*Quantity AS line_item_total
+FROM InvoiceLineItem
+WHERE line_item_total BETWEEN 15 AND 25
+
+#Acitivity 18
+
+#Activity 19
+
