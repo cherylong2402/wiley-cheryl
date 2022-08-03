@@ -65,13 +65,12 @@ WHERE ParentCategoryID IS NOT NULL
 SELECT Name, Notes
 FROM Workout
 WHERE LevelId IS 3 
-AND Notes CONTAINS 'you'
+AND Notes LIKE '%you%';
 
 #Acitivity 16
-SELECT FirstName, LastName, City 
-FROM Client 
-WHERE LastName LIKE 'L%' AND LastName LIKE 'M%' AND LastName LIKE 'N%'
-AND WHERE City IS 'LaPlace'
+SELECT EmailAddress 
+FROM Login 
+WHERE clientid=(SELECT clientid FROM client WHERE firstname='Estrella' and lastname='Bazely');
 
 #Activity 17
 SELECT InvoiceId, Description, Price, Quantity, ServiceDate, Price*Quantity AS line_item_total
@@ -79,6 +78,20 @@ FROM InvoiceLineItem
 WHERE line_item_total BETWEEN 15 AND 25
 
 #Acitivity 18
+SELECT * FROM Client
+WHERE FirstName IS "Estrella" AND WHERE LastName IS "Bazely"
+SELECT * FROM Login 
+WHERE ClientId IS 
 
 #Activity 19
+SELECT WorkoutId 
+FROM Workout
+WHERE Name = 'This Is Parkour'
 
+SELECT GoalId 
+FROM WorkoutGoal
+WHERE WorkoutId = 12
+
+SELECT GoalName 
+FROM Goal
+WHERE GoalId = 3 
