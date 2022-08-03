@@ -1,0 +1,50 @@
+CREATE database MovieCatalogue
+
+USE MovieCatalogue; 
+CREATE TABLE Movie ( 	
+	MovieID INT NOT NULL auto_increment,
+	GenreID INT NOT NULL,
+	DirectorID INT NULL,
+	RatingID INT null,
+	Title VARCHAR(128) NOT NULL,
+	ReleaseDate DATE NULL,
+    PRIMARY KEY (MovieID)
+);
+
+CREATE TABLE Genre (
+	GenreID INT NOT NULL auto_increment,
+	GenreName VARCHAR(30) NOT NULL,
+    PRIMARY KEY (GenreID)
+);
+
+CREATE TABLE Director (
+	DirectorID INT NOT NULL auto_increment,
+	FirstName VARCHAR(30) NOT NULL,
+	LastName VARCHAR(30) NOT NULL,
+	BirthDate DATE NULL,
+    PRIMARY KEY (DirectorID)
+);
+	
+CREATE TABLE Rating (
+	RatingID INT NOT NULL auto_increment,
+	RatingName VARCHAR(5) NOT NULL,
+    PRIMARY KEY (RatingID)
+);
+
+CREATE TABLE Actor (
+	ActorID  INT NOT NULL auto_increment,
+	FirstName VARCHAR(30) NOT NULL,
+	LastName VARCHAR(30) NOT NULL,
+	BirthDate DATE NULL,
+    PRIMARY KEY (ActorID)
+);
+
+CREATE TABLE CastMembers (
+	CastMemberID INT NOT NULL auto_increment,
+	ActorID INT NOT NULL,
+	MovieID INT NOT NULL,
+	`Role` VARCHAR(50) NOT NULL,
+    PRIMARY KEY (CastMemberID)
+);
+
+
