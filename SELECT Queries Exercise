@@ -76,15 +76,7 @@ AND LastName LIKE 'L%'OR'M%'OR'N%'
 #Activity 17
 SELECT InvoiceId, Description, Price, Quantity, ServiceDate, Price*Quantity AS line_item_total
 FROM InvoiceLineItem
-WHERE line_item_total BETWEEN 15 AND 25
-
-///
-
-SELECT Price*Quantity AS "line_item_total"
-FROM InvoiceLineItem
-SELECT InvoiceId, Description, Price, Quantity, ServiceDate, line_item_total
-FROM InvoiceLineItem
-WHERE line_item_total BETWEEN 15 AND 25
+WHERE Price*Quantity BETWEEN 15 AND 25
 
 #Acitivity 18
 SELECT * FROM Client
