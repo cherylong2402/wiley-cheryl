@@ -59,20 +59,17 @@ LEFT JOIN Login
   ON Client.ClientId=Login.ClientId
   WHERE Client.FirstName='Romeo' AND Client.LastName='Seaward'
 
-10  ????
-SELECT
-	p.`Name` ParentCategory,
-    ec.`Name` Category
-FROM ExerciseCategory ec
-INNER JOIN ExerciseCategory p 
-	ON ec.ParentCategoryId = p.ExerciseCategoryId;
+10  
+SELECT parent.Name AS ParentCategory, child.Name AS Category
+FROM ExerciseCategory child
+JOIN ExerciseCategory parent
+	ON child.ParentCategoryId = parent.ExerciseCategoryId;
 
-11   ????
-	p.`Name` ParentCategory,
-    ec.`Name` Category
-FROM ExerciseCategory ec
-LEFT OUTER JOIN ExerciseCategory p 
-	ON ec.ParentCategoryId = p.ExerciseCategoryId;
+11  
+SELECT parent.Name ParentCategory, child.Name Category
+FROM ExerciseCategory child
+LEFT JOIN ExerciseCategory parent
+	ON child.ParentCategoryId = parent.ExerciseCategoryId;
 
 12
 SELECT Client.FirstName, Client.LastName
@@ -116,3 +113,12 @@ JOIN Exercise
 	ON ExerciseInstance.ExerciseId = Exercise.ExerciseId
 
 16
+SELECT Exercise.Name AS ExerciseName, ExerciseInstanceUnitValue.Value, Unit.Name AS UnitName
+FROM Exercise 
+JOIN ExerciseInstance 
+	ON Exercise.ExerciseId = ExerciseInstance.ExerciseId
+LEFT JOIN ExerciseInstanceUnitValue 
+	ON ExerciseInstance.ExerciseInstanceId = ExerciseInstanceUnitValue .ExerciseInstanceId
+LEFT JOIN Unit
+	On ExerciseInstanceUnitValue.UnitId = Unit.UnitId
+WHERE Exercise.Name = 'Plank'
