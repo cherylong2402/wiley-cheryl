@@ -1,0 +1,118 @@
+1
+SELECT * 
+FROM ExerciseCategory 
+JOIN Exercise
+
+2
+SELECT ExerciseCategory.Name, Exercise.Name
+FROM ExerciseCategory
+JOIN Exercise
+  ON ExerciseCategory.ExerciseCategoryId=Exercise.ExerciseCategoryId
+  WHERE ExerciseCategory.ParentCategoryId IS NULL
+
+3
+SELECT ExerciseCategory.Name AS CategoryName, Exercise.Name AS ExerciseName
+FROM ExerciseCategory
+JOIN Exercise
+  ON ExerciseCategory.ExerciseCategoryId=Exercise.ExerciseCategoryId
+  WHERE ExerciseCategory.ParentCategoryId IS NULL
+
+4
+SELECT Client.Firstname, Client.LastName, Client.BirthDate, Login.EmailAddress
+FROM Client
+JOIN Login
+  ON Client.ClientId=Login.ClientId
+  WHERE Client.BirthDate BETWEEN '1990-01-01' AND '1999-12-31'
+
+5
+SELECT Workout.Name, Client.FirstName, Client.LastName
+FROM ClientWorkout
+JOIN Client
+  ON ClientWorkout.ClientId=Client.ClientId
+JOIN Workout 
+  ON ClientWorkout.WorkoutId = Workout.WorkoutId
+  WHERE Client.LastName LIKE 'C%'
+
+6
+SELECT Workout.Name, Goal.Name
+FROM Workout
+JOIN WorkoutGoal ON Workout.WorkoutId = WorkoutGoal.WorkoutId
+JOIN Goal ON WorkoutGoal.GoalId = Goal.GoalId
+
+7
+SELECT Client.FirstName, Client.LastName, Login.ClientId, Login.EmailAddress
+FROM Client
+LEFT JOIN Login
+  ON Client.ClientId=Login.ClientId
+
+8
+SELECT Client.FirstName, Client.LastName, Login.ClientId, Login.EmailAddress
+FROM Client
+LEFT JOIN Login
+  ON Client.ClientId=Login.ClientId
+  WHERE Login.ClientId IS NULL
+
+9
+SELECT Client.FirstName, Client.LastName, Login.ClientId, Login.EmailAddress
+FROM Client
+LEFT JOIN Login
+  ON Client.ClientId=Login.ClientId
+  WHERE Client.FirstName='Romeo' AND Client.LastName='Seaward'
+
+10  ????
+SELECT
+	p.`Name` ParentCategory,
+    ec.`Name` Category
+FROM ExerciseCategory ec
+INNER JOIN ExerciseCategory p 
+	ON ec.ParentCategoryId = p.ExerciseCategoryId;
+
+11   ????
+	p.`Name` ParentCategory,
+    ec.`Name` Category
+FROM ExerciseCategory ec
+LEFT OUTER JOIN ExerciseCategory p 
+	ON ec.ParentCategoryId = p.ExerciseCategoryId;
+
+12
+SELECT Client.FirstName, Client.LastName
+FROM Client
+LEFT JOIN ClientWorkout
+  ON Client.ClientId = ClientWorkout.ClientId
+  WHERE ClientWorkout.WorkoutId IS NULL
+
+13
+SELECT Workout.Name, Workout.WorkoutId
+FROM Client
+JOIN ClientGoal
+  ON Client.ClientId = ClientGoal.ClientId
+JOIN WorkoutGoal
+  ON ClientGoal.GoalId = WorkoutGoal.GoalId
+JOIN Workout
+  ON WorkoutGoal.WorkoutId = Workout.WorkoutId
+WHERE Client.FirstName = 'Shell'
+  AND Client.LastName = 'Creane'
+  AND Workout.LevelId = 1
+
+14
+SELECT Workout.Name AS Workoutname, Goal.Name AS Goalname
+FROM Workout
+LEFT JOIN WorkoutGoal 
+  ON Workout.WorkoutId=WorkoutGoal.WorkoutId
+  AND WorkoutGoal.GoalId=10
+LEFT JOIN Goal
+  ON WorkoutGoal.GoalId=Goal.GoalId
+
+15
+SELECT Workout.Name AS WorkoutName,Exercise.Name AS ExerciseName
+FROM Workout 
+JOIN WorkoutDay 
+	ON Workout.WorkoutId = WorkoutDay.WorkoutId
+JOIN WorkoutDayExerciseInstance  
+	ON WorkoutDay.WorkoutDayId = WorkoutDayExerciseInstance.WorkoutDayId
+JOIN ExerciseInstance 
+	ON WorkoutDayExerciseInstance.ExerciseInstanceId = ExerciseInstance.ExerciseInstanceId
+JOIN Exercise  
+	ON ExerciseInstance.ExerciseId = Exercise.ExerciseId
+
+16
