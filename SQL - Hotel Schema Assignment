@@ -142,16 +142,16 @@ WHERE Reservations.End_Date BETWEEN '7/1/2023' AND '7/31/2023';
 
 #2.	Write a query that returns a list of all reservations for rooms with a jacuzzi, 
 #	displaying the guest's name, the room number, and the dates of the reservation.
-SELECT Reservations.Name, Reservations.Room_Number, Reservation.Start_Date, Reservation.End_Date
+SELECT Reservations.Name, Reservations.Room_Number, Reservations.Start_Date, Reservations.End_Date
 FROM Reservations
 JOIN Rooms
 		ON Reservations.Room_Id=Rooms.Room_Id
 WHERE Rooms.Amenities LIKE '%Jacuzzi%';
 
-#3.	Write a query that returns all the rooms reserved for a specific guest, 
+#3.	Write a query that returns all the rooms reserved for a specific guest,  ????
 #	including the guest's name, the room(s) reserved, the starting date of the reservation, 
 #	and how many people were included in the reservation. (Choose a guest's name from the existing data.)
-SELECT Reservations.Name, Reservations.Room_Number, Reservation.Start_Date, Reservation.End_Date,SUM(Adults*Children)AS NumberOfPeople
+SELECT Reservations.Name, Reservations.Room_Number, Reservations.Start_Date, Reservations.End_Date,SUM(Adults*Children)AS NumberOfPeople
 FROM Reservations
 WHERE Reservations.Name = 'Cheryl Ong'
 GROUP BY Reservations.Name;
@@ -167,11 +167,12 @@ ORDER BY Rooms.Room;
 
 
 #5.	Write a query that returns all the rooms accommodating at least three guests and that are reserved on any date in April 2023.
-SELECT Reservations.Room_Number, SUM(Adults*Children) AS NumberofGuests, Reservation.Start_Date
+SELECT Reservations.Room_Number, SUM(Adults+Children) AS NumberofGuests, Reservations.Start_Date
 FROM Reservations
-WHERE Reservations.Start_Date  > '04/01/2023';
+WHERE Reservations.Start_Date BETWEEN '4/1/2023' AND '4/30/2023'
+HAVING SUM(Adults+Children)>2;
 
-#6.	Write a query that returns a list of all guest names and the number of reservations per guest, 
+#6.	Write a query that returns a list of all guest names and the number of reservations per guest, ?????
 #	sorted starting with the guest with the most reservations and then by the guest's last name.
 SELECT SUBSTRING(Reservations.Name, 1, CHARINDEX(' ', Name) - 1) AS FirstName,     
        SUBSTRING(Reservations.Name, CHARINDEX(' ', Name) + 1, LEN(Name) - CHARINDEX(' ', Name)) AS LastName,
