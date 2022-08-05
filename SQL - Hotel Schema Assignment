@@ -125,3 +125,7 @@ VALUES
 DELETE FROM Reservations WHERE Name='Jeremiah Pendergrass';
 DELETE FROM Guests WHERE NAME='Jeremiah Pendergrass';
 
+
+PART FOUR
+
+
