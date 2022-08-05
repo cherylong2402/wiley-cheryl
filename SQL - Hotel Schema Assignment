@@ -45,6 +45,10 @@ FOREIGN KEY (Room_Id)
 REFERENCES Rooms(Room_Id));
 
 
+
+
+
+
 PART 3
 use Hotel;
 
@@ -126,6 +130,59 @@ DELETE FROM Reservations WHERE Name='Jeremiah Pendergrass';
 DELETE FROM Guests WHERE NAME='Jeremiah Pendergrass';
 
 
-PART FOUR
 
+
+
+PART FOUR
+#1.	Write a query that returns a list of reservations that end in July 2023, 
+#	including the name of the guest, the room number(s), and the reservation dates.
+SELECT Reservations.Name, Reservations.Room_Number, Reservation.Start_Date, Reservation.End_Date
+FROM Reservations 
+WHERE Reservation.End_Date BETWEEN '07/01/2023' AND '07/31/2023';
+
+#2.	Write a query that returns a list of all reservations for rooms with a jacuzzi, 
+#	displaying the guest's name, the room number, and the dates of the reservation.
+SELECT Reservations.Name, Reservations.Room_Number, Reservation.Start_Date, Reservation.End_Date
+FROM Reservations
+JOIN Rooms
+		ON Reservations.Room_Id=Rooms.Room_Id
+WHERE Rooms.Amenities LIKE '%Jacuzzi%';
+
+#3.	Write a query that returns all the rooms reserved for a specific guest, 
+#	including the guest's name, the room(s) reserved, the starting date of the reservation, 
+#	and how many people were included in the reservation. (Choose a guest's name from the existing data.)
+SELECT Reservations.Name, Reservations.Room_Number, Reservation.Start_Date, Reservation.End_Date,SUM(Adults*Children)AS NumberOfPeople
+FROM Reservations
+WHERE Reservations.Name = 'Cheryl Ong'
+GROUP BY Reservations.Name;
+
+
+#4.	Write a query that returns a list of rooms, reservation ID, and per-room cost for each reservation. 
+#	The results should include all rooms, whether or not there is a reservation associated with the room.
+SELECT Rooms.Room, Reservations.Reservation_Id, Reservations.Total_Room_Cost
+FROM Rooms
+LEFT JOIN Reservations
+	ON Rooms.Room_Id=Reservations.Room_Id
+ORDER BY Rooms.Room;
+
+
+#5.	Write a query that returns all the rooms accommodating at least three guests and that are reserved on any date in April 2023.
+SELECT Reservations.Room_Number, SUM(Adults*Children) AS NumberofGuests, Reservation.Start_Date
+FROM Reservations
+WHERE Reservations.Start_Date  > '04/01/2023';
+
+#6.	Write a query that returns a list of all guest names and the number of reservations per guest, 
+#	sorted starting with the guest with the most reservations and then by the guest's last name.
+SELECT SUBSTRING(Reservations.Name, 1, CHARINDEX(' ', Name) - 1) AS FirstName,     
+       SUBSTRING(Reservations.Name, CHARINDEX(' ', Name) + 1, LEN(Name) - CHARINDEX(' ', Name)) AS LastName,
+		COUNT(Reservations.Name)AS NumberOfReservations
+FROM Reservations
+GROUP BY Reservations.FirstName, Reservations.LastName
+ORDER BY COUNT(Reservations.Name), Reservations.LastName;
+
+#7.	Write a query that displays the name, address, and phone number of a guest based on their phone number.
+#(Choose a phone number from the existing data.)
+SELECT Guests.Name, Guests.Address, Guests.Phone
+FROM Guests
+WHERE Guests.Phone = '(478) 277-9632';
 
