@@ -136,47 +136,111 @@ DELETE FROM Guests WHERE NAME='Jeremiah Pendergrass';
 PART FOUR
 #1.	Write a query that returns a list of reservations that end in July 2023, 
 #	including the name of the guest, the room number(s), and the reservation dates.
+
 SELECT Reservations.Name, Reservations.Room_Number, Reservations.Start_Date, Reservations.End_Date
 FROM Reservations 
 WHERE Reservations.End_Date BETWEEN '7/1/2023' AND '7/31/2023';
 
+	#Name	Room_Number	Start_Date	End_Date
+	Cheryl Ong	205	6/28/2023	7/2/2023
+	Walter Holaway	204	7/13/2023	7/14/2023
+	Wilfred Vise	401	7/18/2023	7/21/2023
+	Bettyann Seery	303	7/28/2023	7/29/2023
+
+
 
 #2.	Write a query that returns a list of all reservations for rooms with a jacuzzi, 
 #	displaying the guest's name, the room number, and the dates of the reservation.
+
 SELECT Reservations.Name, Reservations.Room_Number, Reservations.Start_Date, Reservations.End_Date
 FROM Reservations
 JOIN Rooms
 		ON Reservations.Room_Id=Rooms.Room_Id
 WHERE Rooms.Amenities LIKE '%Jacuzzi%';
 
+# Name, Room_Number, Start_Date, End_Date
+Karie Yang, 201, 3/6/2023, 3/7/2023
+Bettyann Seery, 203, 2/5/2023, 2/10/2023
+Karie Yang, 203, 9/13/2023, 9/15/2023
+Cheryl Ong, 205, 6/28/2023, 7/2/2023
+Wilfred Vise, 207, 4/23/2023, 4/24/2023
+Walter Holaway, 301, 4/9/2023, 4/13/2023
+Mack Simmer, 301, 11/22/2023, 11/25/2023
+Bettyann Seery, 303, 7/28/2023, 7/29/2023
+Duane Cullison, 305, 2/22/2023, 2/24/2023
+Bettyann Seery, 305, 8/30/2023, 9/1/2023
+Cheryl Ong, 307, 3/17/2023, 3/20/2023
+
+
 
 #3.	Write a query that returns all the rooms reserved for a specific guest, 
 #	including the guest's name, the room(s) reserved, the starting date of the reservation, 
 #	and how many people were included in the reservation. (Choose a guest's name from the existing data.)
+
 SELECT Reservations.Name, Reservations.Room_Number, Reservations.Start_Date, Reservations.End_Date,
 (Reservations.Adults+Reservations.Children)AS NumberOfGuests
 FROM Reservations
 WHERE Reservations.Name = 'Cheryl Ong';
 
+# Name	Room_Number	Start_Date	End_Date	NumberOfGuests
+Cheryl Ong	307	3/17/2023	3/20/2023	2
+Cheryl Ong	205	6/28/2023	7/2/2023	2
+
+
 
 #4.	Write a query that returns a list of rooms, reservation ID, and per-room cost for each reservation. 
 #	The results should include all rooms, whether or not there is a reservation associated with the room.
+
 SELECT Rooms.Room, Reservations.Reservation_Id, Reservations.Total_Room_Cost
 FROM Rooms
 LEFT JOIN Reservations
 	ON Rooms.Room_Id=Reservations.Room_Id
 ORDER BY Rooms.Room;
 
+# Room, Reservation_Id, Total_Room_Cost
+201, 4, $199.99
+202, 7, $349.98
+203, 2, $999.95
+203, 21, $399.98
+204, 16, $184.99
+205, 15, $699.96
+206, 12, $599.96
+206, 23, $449.97
+207, 10, $174.99
+208, 13, $599.96
+208, 20, $149.99
+301, 9, $799.96
+301, 24, $599.97
+302, 6, $924.95
+302, 25, $699.96
+303, 18, $199.99
+304, 8, $874.95
+304, 14, $184.99
+305, 3, $349.98
+305, 19, $349.98
+306, , 
+307, 5, $524.97
+308, 1, $299.98
+401, 11, $1,199.97
+401, 17, $1,259.97
+401, 22, $1,199.97
+402, , 
+
 
 #5.	Write a query that returns all the rooms accommodating at least three guests and that are reserved on any date in April 2023.
-SELECT Reservations.Room_Number, SUM(Adults+Children) AS NumberofGuests, Reservations.Start_Date
+
+SELECT Reservations.Room_Number, (Reservations.Adults+Reservations.Children) AS NumberofGuests, Reservations.Start_Date
 FROM Reservations
 WHERE Reservations.Start_Date BETWEEN '4/1/2023' AND '4/30/2023'
-HAVING SUM(Adults+Children)>2;
+AND (Reservations.Adults+Reservations.Children)>2;
+
+#No Rooms
+
 
 
 #6.	Write a query that returns a list of all guest names and the number of reservations per guest, 
 #	sorted starting with the guest with the most reservations and then by the guest's last name.
+
 SELECT 
 Reservations.Name AS FullName,
 SUBSTRING(Name, 1, LOCATE(' ', Name) - 1) AS FirstName,
@@ -186,9 +250,27 @@ FROM Reservations
 GROUP BY Reservations.Name
 ORDER BY COUNT(Reservations.Name) DESC, SUBSTRING(Name, LOCATE(' ', Name) + 1, LENGTH(Name));
 
+# FullName, FirstName, LastName, NumberOfReservations
+Mack Simmer, Mack, Simmer, 4
+Bettyann Seery, Bettyann, Seery, 3
+Duane Cullison, Duane, Cullison, 2
+Walter Holaway, Walter, Holaway, 2
+Aurore Lipton, Aurore, Lipton, 2
+Cheryl Ong, Cheryl, Ong, 2
+Maritza Tilton, Maritza, Tilton, 2
+Joleen Tison, Joleen, Tison, 2
+Wilfred Vise, Wilfred, Vise, 2
+Karie Yang, Karie, Yang, 2
+Zachery Luechtefeld, Zachery, Luechtefeld, 1
+Jeremiah Pendergrass, Jeremiah, Pendergrass, 1
+
 
 #7.	Write a query that displays the name, address, and phone number of a guest based on their phone number.
 #(Choose a phone number from the existing data.)
+
 SELECT Guests.Name, Guests.Address, Guests.Phone
 FROM Guests
 WHERE Guests.Phone = '(478) 277-9632';
+
+# Name, Address, Phone
+Bettyann Seery, 750 Wintergreen Dr., (478) 277-9632
