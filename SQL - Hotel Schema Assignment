@@ -140,6 +140,7 @@ SELECT Reservations.Name, Reservations.Room_Number, Reservations.Start_Date, Res
 FROM Reservations 
 WHERE Reservations.End_Date BETWEEN '7/1/2023' AND '7/31/2023';
 
+
 #2.	Write a query that returns a list of all reservations for rooms with a jacuzzi, 
 #	displaying the guest's name, the room number, and the dates of the reservation.
 SELECT Reservations.Name, Reservations.Room_Number, Reservations.Start_Date, Reservations.End_Date
@@ -147,6 +148,7 @@ FROM Reservations
 JOIN Rooms
 		ON Reservations.Room_Id=Rooms.Room_Id
 WHERE Rooms.Amenities LIKE '%Jacuzzi%';
+
 
 #3.	Write a query that returns all the rooms reserved for a specific guest, 
 #	including the guest's name, the room(s) reserved, the starting date of the reservation, 
@@ -172,18 +174,21 @@ FROM Reservations
 WHERE Reservations.Start_Date BETWEEN '4/1/2023' AND '4/30/2023'
 HAVING SUM(Adults+Children)>2;
 
-#6.	Write a query that returns a list of all guest names and the number of reservations per guest, ?????
+
+#6.	Write a query that returns a list of all guest names and the number of reservations per guest, 
 #	sorted starting with the guest with the most reservations and then by the guest's last name.
-SELECT SUBSTRING(Reservations.Name, 1, CHARINDEX(' ', Name) - 1) AS FirstName,     
-       SUBSTRING(Reservations.Name, CHARINDEX(' ', Name) + 1, LEN(Name) - CHARINDEX(' ', Name)) AS LastName,
-		COUNT(Reservations.Name)AS NumberOfReservations
+SELECT 
+Reservations.Name AS FullName,
+SUBSTRING(Name, 1, LOCATE(' ', Name) - 1) AS FirstName,
+SUBSTRING(Name, LOCATE(' ', Name) + 1, LENGTH(Name)) AS LastName,
+COUNT(Reservations.Name)AS NumberOfReservations
 FROM Reservations
-GROUP BY Reservations.FirstName, Reservations.LastName
-ORDER BY COUNT(Reservations.Name), Reservations.LastName;
+GROUP BY Reservations.Name
+ORDER BY COUNT(Reservations.Name) DESC, SUBSTRING(Name, LOCATE(' ', Name) + 1, LENGTH(Name));
+
 
 #7.	Write a query that displays the name, address, and phone number of a guest based on their phone number.
 #(Choose a phone number from the existing data.)
 SELECT Guests.Name, Guests.Address, Guests.Phone
 FROM Guests
 WHERE Guests.Phone = '(478) 277-9632';
-
