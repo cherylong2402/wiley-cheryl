@@ -148,13 +148,13 @@ JOIN Rooms
 		ON Reservations.Room_Id=Rooms.Room_Id
 WHERE Rooms.Amenities LIKE '%Jacuzzi%';
 
-#3.	Write a query that returns all the rooms reserved for a specific guest,  ????
+#3.	Write a query that returns all the rooms reserved for a specific guest, 
 #	including the guest's name, the room(s) reserved, the starting date of the reservation, 
 #	and how many people were included in the reservation. (Choose a guest's name from the existing data.)
-SELECT Reservations.Name, Reservations.Room_Number, Reservations.Start_Date, Reservations.End_Date,SUM(Adults*Children)AS NumberOfPeople
+SELECT Reservations.Name, Reservations.Room_Number, Reservations.Start_Date, Reservations.End_Date,
+(Reservations.Adults+Reservations.Children)AS NumberOfGuests
 FROM Reservations
-WHERE Reservations.Name = 'Cheryl Ong'
-GROUP BY Reservations.Name;
+WHERE Reservations.Name = 'Cheryl Ong';
 
 
 #4.	Write a query that returns a list of rooms, reservation ID, and per-room cost for each reservation. 
