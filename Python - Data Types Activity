@@ -1,9 +1,9 @@
 #Activity 1
 Number=(input("Enter an integer:"))
 print(type(Number))
-IntegerNunmber=int(Number)
-IntegerNumber=(input("Enter the integer again:"))
+IntegerNumber=int(Number)
 print("The value is", IntegerNumber, "with type",type(IntegerNumber))
+IntegerNumber=(input("Enter the integer again:"))
 
 #Activity 2
 result = (5 + 3) ** 2 * 9 
